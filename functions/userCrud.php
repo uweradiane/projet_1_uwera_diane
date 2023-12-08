@@ -7,19 +7,23 @@
 function createUser(array $data)
 {
     global $conn;
-    
-    $query = "INSERT INTO user VALUES (NULL, ?, ?, ?)";
 
+    $query = "INSERT INTO user VALUES(NULL,?,?,?,?,?,?,?,?,?)";
     if ($stmt = mysqli_prepare($conn, $query)) {
-        
+
         mysqli_stmt_bind_param(
             $stmt,
-            "sssss",
+            "sssssiisi",
             $data['user_name'],
             $data['email'],
             $data['pwd'],
             $data['fname'],
-            $data['lname']
+            $data['lname'],
+            $data['billing_address_id'],
+            $data['shipping_address_id'],
+            $data['token'],
+            $data['role_id']
+
         );
 
         /* Exécution de la requête */
@@ -47,7 +51,7 @@ function getAllUsers()
  * Get user by id
  */
 
- //Todo: edit to prepare
+//Todo: edit to prepare
 function getUserById(int $id)
 {
     global $conn;
@@ -78,23 +82,40 @@ function updateUser(array $data)
 {
     global $conn;
 
-    $query = "UPDATE user SET user_name = ?, email = ?, pwd = ?
+    $query = "UPDATE user SET user_name = ?, email = ?, pwd = ?,billing_address_id = ?, shipping_address_id = ?, role_id = ?
             WHERE user.id = ?;";
 
     if ($stmt = mysqli_prepare($conn, $query)) {
 
         mysqli_stmt_bind_param(
             $stmt,
-            "sssssi",
+            "sssssssii",
             $data['user_name'],
             $data['email'],
             $data['pwd'],
             $data['fname'],
             $data['lname'],
+            $data['billing_address_id'],
+            $data['shippinging_address_id'],
+            $data['role_id'],
             $data['id']
         );
 
         /* Exécution de la requête */
+        $result = mysqli_stmt_execute($stmt);
+    }
+}
+function updatetoken($data)
+{
+    global $conn;
+    $querry = "UPDATE user Set token= ? where user.id =?";
+    if ($stmt = mysqli_prepare($conn, $querry)) {
+        mysqli_stmt_bind_param(
+            $stmt,
+            "si",
+            $data['token'],
+            $data['id'],
+        );
         $result = mysqli_stmt_execute($stmt);
     }
 }
