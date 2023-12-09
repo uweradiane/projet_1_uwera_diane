@@ -49,10 +49,10 @@ function emailIsValid($email)
 
 function pwdLenghtValidation($pwd)
 {
-    //minimum 6 max 16
+    //minimum 8 max 16
     $length = strlen($pwd);
 
-    if ($length < 6) {
+    if ($length < 8) {
         return [
             'isValid' => false,
             'msg' => 'Votre mot de passe est trop court. Doit être supérieur a 8 caractères'

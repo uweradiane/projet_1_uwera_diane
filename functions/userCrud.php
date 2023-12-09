@@ -82,21 +82,21 @@ function updateUser(array $data)
 {
     global $conn;
 
-    $query = "UPDATE user SET user_name = ?, email = ?, pwd = ?,billing_address_id = ?, shipping_address_id = ?, role_id = ?
+    $query = "UPDATE user SET user_name = ?, email = ?, pwd = ?, fname = ?, lname = ?, billing_address_id = ?, shipping_address_id = ?, role_id = ?
             WHERE user.id = ?;";
 
     if ($stmt = mysqli_prepare($conn, $query)) {
 
         mysqli_stmt_bind_param(
             $stmt,
-            "sssssssii",
+            "sssssiisi",
             $data['user_name'],
             $data['email'],
             $data['pwd'],
             $data['fname'],
             $data['lname'],
             $data['billing_address_id'],
-            $data['shippinging_address_id'],
+            $data['shipping_address_id'],
             $data['role_id'],
             $data['id']
         );
@@ -105,6 +105,7 @@ function updateUser(array $data)
         $result = mysqli_stmt_execute($stmt);
     }
 }
+
 function updatetoken($data)
 {
     global $conn;

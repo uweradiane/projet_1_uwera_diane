@@ -1,59 +1,90 @@
-<a href="../">Accueil</a>
-<h2>Login result</h2>
 <?php
-
+session_start();
+require_once '../utils/connection.php';
 require_once '../functions/userCrud.php';
 require_once '../functions/function.php';
-require_once '../utils/connection.php';
+require_once '../functions/validation.php';
 
-//Authentification
+var_dump($_SESSION);
+$user_name = '';
+if (isset($_SESSION['login_form']['user_name'])) {
+    $user_name = $_SESSION['login_form']['user_name'];
+}
 
-if (isset($_POST)) {
+$pwd = '';
+if (isset($_SESSION['login_form']['pwd'])) {
+    $pwd = $_SESSION['login_form']['pwd'];
+}
 
-    //vérifier si username dans DB
+// Authentication
+if (isset($_POST['user_name']) && isset($_POST['pwd'])) {
+    // Check if username is in the DB
     if (!empty($_POST['user_name'])) {
         $userData = getUserByUsername($_POST['user_name']);
     } else {
-        //Erreur rien entré
-        //redirect vers login
+        // Error: nothing entered
+        // Redirect to login
         $url = '../pages/login.php';
         header('Location: ' . $url);
+        exit();
     }
 
     $token = hash('sha256', random_bytes(32));
     echo '</br></br>Mon token : </br>';
-    //si l'utilisateur exist dans la DB
+    // If the user exists in the DB
     if ($userData) {
-        // comparer pwd avec DB (version encodée)
+        // Compare password with DB (encoded version)
         $enteredPwdEncoded = encodePwd($_POST['pwd']);
 
         if ($userData['pwd'] == $enteredPwdEncoded) {
-            //traitement si mdp correct
-            //créeer un token
+            // Correct password
+            // Create a token
             $data = [
                 'token' => $token,
                 'id' => $userData['id']
-
             ];
+            $updateToken = updateUser($data);
 
+            $_SESSION['authentification'] = [
+                'id' => $userData['id'],
+                'role_id' => $userData['role_id'],
+                'token' => $token
+            ];
+            var_dump($_SESSION['authentification']);
 
             var_dump($token);
-            //enregistrer le token en Session et dans la DB
+            // Save the token in Session and in the DB
 
             echo "C'est le bon mdp ";
         } else {
-            //traitement si mdp incorrect
-            //compter lenombre d'erreur et bloquer l'IP apres 3 erreur
-            //Les erreurs peuvent etre dans une Session
-            //Proposer de réinitialiser le mdp
-            //Créer un msg d'erreur
-            //renvoyer sur la page login
-            echo "C'est pas le bon mdp ";
+            // Incorrect password
+            $_SESSION['errorLogin'] = [
+                'user_name' => $userData['message'],
+                'pwd' => 'mot de passe incorrect '
+            ];
+
+            $url = '../pages/login.php';
+            header('location:' . $url);
+            exit();
         }
+    } else {
+        // User not found in the DB
+        $_SESSION['errorLogin'] = [
+            'user_name' => 'Utilisateur non trouvé',
+            'pwd' => 'mot de passe incorrect '
+        ];
+
+        $url = '../pages/login.php';
+        header('location:' . $url);
+        exit();
     }
 } else {
-    //redirect vers login
-    $url = '../pages/login.php';
-    header('Location: ' . $url);
+    // Form not submitted
+    $url = '../pages/address.php';
+    header('location:' . $url);
+    exit();
 }
+
+// Rest of your code...
 ?>
+<a href="./pages/homepage.php">homepage</a>
