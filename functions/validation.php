@@ -1,36 +1,31 @@
 <?php
-
-function usernameIsValid(string $username): array
+function userNameIsValid(string $username): array
 {
     $result = [
-        'isValid' => true,
-        'msg' => ''
-
+        "isValid" => true,
+        "msg" => ""
     ];
-
     $userInDB = getUserByUsername($username);
 
-    if (strlen($username) < 2) {
+    if (strlen($username) <= 2) {
         $result = [
             'isValid' => false,
-            'msg' => 'Le nom utilisé est trop court'
-
+            'msg' => 'The username you are used is very short'
         ];
     } elseif (strlen($username) > 20) {
         $result = [
             'isValid' => false,
-            'msg' => 'Le nom utilisé est trop long'
+            'msg' => 'The username you are used is very long'
 
         ];
     } elseif ($userInDB) {
         $result = [
             'isValid' => false,
-            'msg' => 'Le nom est déjà utilisé'
+            'msg' => 'The userName is already used'
         ];
     }
     return $result;
-}
-
+};
 function emailIsValid($email)
 {
 
@@ -38,7 +33,7 @@ function emailIsValid($email)
     if (!preg_match($email_validation_regex, $email)) {
         return [
             'isValid' => false,
-            'msg' => "Format d'email invalid",
+            'msg' => "format of the Email is invalide",
         ];
     }
     return [
@@ -46,7 +41,6 @@ function emailIsValid($email)
         'msg' => '',
     ];
 }
-
 function pwdLenghtValidation($pwd)
 {
     //minimum 8 max 16
@@ -55,16 +49,56 @@ function pwdLenghtValidation($pwd)
     if ($length < 8) {
         return [
             'isValid' => false,
-            'msg' => 'Votre mot de passe est trop court. Doit être supérieur a 8 caractères'
+            'msg' => 'Your password is very short. Have to be greater than 8 characters'
         ];
     } elseif ($length > 16) {
         return [
             'isValid' => false,
-            'msg' => 'Votre mot de passe est trop long. Doit être inférieur a 16 caractères'
+            'msg' => 'Your password is very long. Have to be smaller than 16 characters'
         ];
     }
     return [
         'isValid' => true,
         'msg' => ''
     ];
+}
+function fnameIsValid($fname)
+{
+    $result = [
+        "isValid" => true,
+        "msg" => ""
+    ];
+
+    if (strlen($fname) <= 2) {
+        $result = [
+            "isValid" => false,
+            "msg" => "Your Last name is very short"
+        ];
+    } elseif (strlen($fname) >= 20) {
+        $result = [
+            "isValid" => false,
+            "msg" => "Your First name is very long"
+        ];
+    }
+    return $result;
+}
+function lnameIsValid($lname)
+{
+    $result = [
+        "isValid" => true,
+        "msg" => ""
+    ];
+
+    if (strlen($lname) <= 2) {
+        $result = [
+            "isValid" => false,
+            "msg" => "Your Last name is very short"
+        ];
+    } elseif (strlen($lname) >= 20) {
+        $result = [
+            "isValid" => false,
+            "msg" => "Your Last is very long"
+        ];
+    }
+    return $result;
 }
