@@ -4,7 +4,7 @@ require_once "../functions/function.php";
 require_once "../connections/connection.php";
 require_once "../functions/userCrud.php";
 session_start();
-
+$token = hash('sha256', random_bytes(32));
 if (isset($_POST)) {
 
     $_SESSION["signup_form"] = $_POST;
@@ -69,7 +69,7 @@ if (isset($_POST)) {
             'lname' => $_POST['lname'],
             'billing_address_id' => 1,
             'shipping_address_id' => 1,
-            'token' => "",
+            'token' => $token,
             'role_id' => 3
         ];
         var_dump($data);

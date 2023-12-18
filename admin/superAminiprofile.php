@@ -9,7 +9,7 @@ $user1 = getUserByUserName($connectedUser['user_name']);
 
 ?>
 <a href="../../index.php">Acceuil</a>
-<form name="form1" method="post" action="./editSuperAdmin.php">
+<form name="form1" method="post" action="./superAdmin.php">
     <fieldset>
         <legend>Profils</legend>
         <label for="userName">UserName: </label>
