@@ -5,9 +5,10 @@ require_once "./connections/connection.php";
 session_start();
 if (isset($_SESSION['auth'])) {
     $id = $_SESSION['auth']['id'];
-    $authenticated = authenticated($_SESSION['auth']);
+    $athenticated = authenticated($_SESSION['auth']);
     $name = getUserNameByID($id);
     $role = $_SESSION['auth']['role_id'];
+    //$product = productManagement($role);
     $url = userIsAdmin($role);
 } else {
 }
@@ -25,10 +26,12 @@ if (isset($_SESSION['auth'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
 
+
+
+
 </head>
 
 <body>
-    <link href="../styles/index.css" rel="stylesheet" />
     <style>
         body {
             background-color: grey;
@@ -68,14 +71,14 @@ if (isset($_SESSION['auth'])) {
     </style>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-        <a class="navbar-brand" href="#">Diane Fashion Shop</a>
+        <a class="navbar-brand" href="#">Diane Fashion Design</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php">Accueil</a>
+                    <a class="nav-link" href="/index.php">Accueil</a>
                 </li>
 
                 <li class="nav-item">
@@ -83,13 +86,15 @@ if (isset($_SESSION['auth'])) {
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo isset($_SESSION['auth']['role_id']) ? $url : "" ?>">Profile</a>
+                    <a class="nav-link" href="<?php echo isset($_SESSION['auth']['role_id']) ? $url : "./pages/login.php" ?>">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href=" <?php echo isset($_SESSION['auth']['role_id']) ? $product : "./products/product.php" ?>">Product</a>
                 </li>
 
             </ul>
         </div>
     </nav>
-
     <h3 style="float: right;">
         <h2>Welcome<a class="nav-link" href=#><?php echo isset($_SESSION['auth']) ? $name['user_name'] : "" ?></a></h2>
     </h3>
@@ -97,7 +102,7 @@ if (isset($_SESSION['auth'])) {
     <form>
         <fieldset>
             <legend>
-                <p class="text-primary"> To Diane Fashion Shop!</p>
+                <p class="text-primary">to Diane Fashion shop.</p>
             </legend>
 
 

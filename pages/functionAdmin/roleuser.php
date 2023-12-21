@@ -1,8 +1,9 @@
 <?php
 require_once "../functions/userCrud.php";
 require_once "../connections/connection.php";
-require_once "../functions/validations.php";
+require_once "../functions/validation.php";
 session_start();
+// Update des roles des utilisateur
 if (isset($_POST)) {
     $role_id = intval($_POST['role_id']);
     $data = [
@@ -12,4 +13,4 @@ if (isset($_POST)) {
     $updatedUserRole = updateUserRole($data);
 }
 ?>
-<a href="./superAdminiprofile.php">Retour</a>
+<a href="./admin.php">Retour</a>

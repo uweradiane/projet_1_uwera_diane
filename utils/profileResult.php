@@ -1,8 +1,9 @@
 <?php
 
-require_once "../functions/userCrud.php";
 require_once "../connections/connection.php";
+require_once "../functions/userCrud.php";
 require_once "../functions/validation.php";
+
 session_start();
 $connectedUser = getUserNameByID($_SESSION['auth']['id']);
 $user = getUserByUserName($connectedUser['user_name']);
@@ -63,7 +64,7 @@ if (isset($_POST)) {
             'id' => $user['id']
 
         ];
-        var_dump($data);
+
 
         $updateUser = updateUser($data);
     } else {
@@ -76,13 +77,13 @@ if (isset($_POST)) {
             'lname' => $validlname['msg']
 
         ];
-        $url = './superAdminprofile.php';
+        $url = './admin.php';
         header('Location: ' . $url);
     }
 } else {
     //redirect vers signup
-    $url = './superAdminprofile.php';
+    $url = './admin.php';
     header('Location: ' . $url);
 }
 ?>
-<a href="./superAdminprofile.php">Retour</a>
+<a href="../pages/profile.php">Retour</a>
