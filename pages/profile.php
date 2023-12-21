@@ -7,12 +7,37 @@ $connectedUser = getUserNameByID($_SESSION['auth']['id']);
 $user1 = getUserByUserName($connectedUser['user_name']);
 // Affichage des informations clents et admin
 ?>
-<a href="../index.php">Acceuil</a>
-<form method="post" action="../utils/profileResult.php">
-    <fieldset>
-        <legend>Profile</legend>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        body {
+            background-color: lightblue;
+        }
+
+        h2 {
+            color: white;
+            text-align: center;
+        }
+
+        p {
+            font-family: verdana;
+            font-size: 20px;
+        }
+    </style>
+    <a href="../index.php">Acceuil</a>
+    <form method="post" action="../utils/profileResult.php">
+        <h2> you can modify your informations </h2>
+
         <label for="userName">User: </label>
-        <?php echo $connectedUser['user_name']; ?>
+        <p style="color: green"><?php echo $connectedUser['user_name']; ?></p>
         <p></p>
         <label for="user_name">UserName:</label>
         <input type="text" name="user_name" id="user_name" value="<?php echo $user1['user_name']; ?>">
@@ -35,5 +60,9 @@ $user1 = getUserByUserName($connectedUser['user_name']);
         <p><?php echo isset($_SESSION['update_errors']['lname']) ? $_SESSION['update_errors']['lname'] : '' ?></p>
 
         <button type="submit">Edit</button>
-    </fieldset>
-</form>
+
+    </form>
+
+</body>
+
+</html>

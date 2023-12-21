@@ -86,7 +86,7 @@ if (isset($_SESSION['auth'])) {
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo isset($_SESSION['auth']['role_id']) ? $url : "./pages/login.php" ?>">Profile</a>
+                    <a class="nav-link" href="<?php echo isset($_SESSION['auth']['role_id']) ? $url : "./pages/login.php" ?>">Client Information</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href=" <?php echo isset($_SESSION['auth']['role_id']) ? $product : "./products/product.php" ?>">Product</a>
