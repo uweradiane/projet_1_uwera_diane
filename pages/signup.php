@@ -36,6 +36,40 @@ if (isset($_SESSION['signup_form']['lname'])) {
 
 <body>
 
+    <style>
+        body {
+            background-color: grey;
+            margin: 50px 0px;
+            padding: 0px;
+            text-align: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("../images/backimage.jpg");
+        }
+
+        label,
+        input {
+            display: block;
+            width: 150px;
+            float: left;
+            margin-bottom: 10px;
+        }
+
+        label {
+            text-align: right;
+            width: 95px;
+            padding-right: 20;
+        }
+
+        br {
+            clear: left;
+        }
+
+        form {
+            display: inline-block;
+        }
+    </style>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Diane Fashion Design</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
