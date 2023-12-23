@@ -7,7 +7,7 @@ session_start();
 ?>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <link rel="stylesheet" href="../styles/product.css">
-<nav class="navbar navbar-expand-lg navbar-light bg-success">
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -17,7 +17,7 @@ session_start();
                 <a class="nav-link " href="../index.php">Accueil</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link " href="./product.php">Product</a>
+                <a class="nav-link " href="./products.php">Produits</a>
             </li>
         </ul>
     </div>
@@ -25,11 +25,11 @@ session_start();
 <form method="post" action="./productResult.php">
     <fieldset>
         <legend>
-            <h3 class="text text-align-center text-color-primary">Add product</h3>
+            <h3 class="text text-align-center text-color-primary">Ajouter Produit</h3>
         </legend>
         <div class="row">
             <div class="col-md-3">
-                <label for="nomprod">Name</label>
+                <label for="nomprod">Nom Produit</label>
             </div>
             <div class="col-md-3">
                 <input type="text" name="name" id="nomprod" placeholder="Nom du produit" value="">
@@ -56,7 +56,7 @@ session_start();
         </div>
         <div class="row">
             <div class="col-md-3">
-                <label for="image">Image</label>
+                <label for="image">Url_image</label>
             </div>
             <div class="col-md-3">
                 <input type="text" name="img_url" id="image" placeholder="Entrez l'url de l'image" value="">

@@ -18,6 +18,7 @@ if (isset($_POST)) {
         $userIsPresent = getUserByUserName($_POST['user_name']);
     } else {
         //Erreur rien entré
+        echo "<p> fill the case of identification";
         //redirect vers login
 
         header('Location: ' . $url);
@@ -39,8 +40,19 @@ if (isset($_POST)) {
                 'token' => $userIsPresent['token']
 
             ];
+            //send to the database
+            $data = [
+                'user_name' => $_POST['user_name'],
+                'token' => $_SESSION['auth']['token']
+            ];
+            updateToken($data);
 
             var_dump($_SESSION['auth']);
+            if ($_SESSION['auth']['role_id'] == 3) {
+                echo "<a class='btn btn-success' href=../client.php> Client Account</a>";
+            } else {
+                echo "<a class='btn btn-success' href='../pages/admin.php'> Admin Account</a>";
+            }
         } else {
             $_SESSION['login_errors'] = [
                 'error_pwd' => true
@@ -60,6 +72,3 @@ if (isset($_POST)) {
 
     header('Location: ' . $url);
 }
-?>
-
-<a href="../index.php">Return to the page Accueil</a>

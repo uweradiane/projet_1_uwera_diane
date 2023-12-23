@@ -35,7 +35,7 @@ function productQuantity($quantity)
     if (!is_numeric($quantity)) {
         $result = [
             "isValid" => false,
-            "msg" => "This field is numeric"
+            "msg" => "Ce champs est numeric"
         ];
     }
     return $result;

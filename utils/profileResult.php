@@ -86,4 +86,4 @@ if (isset($_POST)) {
     header('Location: ' . $url);
 }
 ?>
-<a href="../pages/profile.php">Retour</a>
+<a href="../client.php">Retour</a>

@@ -94,6 +94,5 @@ if (isset($_POST)) {
     $url = '../pages/signup.php';
     header('Location: ' . $url);
 }
-
 ?>
-<a href="../index.php">Return to the page Accueil</a>
+<a href="../pages/login.php"><input type="button" value="Login"></a>

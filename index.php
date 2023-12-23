@@ -71,33 +71,25 @@ if (isset($_SESSION['auth'])) {
     </style>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-        <a class="navbar-brand" href="#">Diane Fashion Design</a>
+        <a class="navbar-brand" href="index.php">Diane Fashion Design</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/index.php">Accueil</a>
+                    <a class="nav-link" href="index.php">Accueil</a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="./pages/login.php">Login</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo isset($_SESSION['auth']['role_id']) ? $url : "./pages/login.php" ?>">Client Information</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href=" <?php echo isset($_SESSION['auth']['role_id']) ? $product : "./products/product.php" ?>">Product</a>
-                </li>
 
             </ul>
         </div>
     </nav>
-    <h3 style="float: right;">
-        <h2>Welcome<a class="nav-link" href=#><?php echo isset($_SESSION['auth']) ? $name['user_name'] : "" ?></a></h2>
-    </h3>
+
 
     <form>
         <fieldset>

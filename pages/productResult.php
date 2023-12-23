@@ -1,7 +1,7 @@
 <?php
-require_once "./productCrud.php";
-require_once "../config/connexion.php";
-require_once "./productsValidation.php";
+require_once "productCrud.php";
+require_once "../connections/connection.php";
+require_once "productvalidation.php";
 session_start();
 
 if (isset($_POST)) {
