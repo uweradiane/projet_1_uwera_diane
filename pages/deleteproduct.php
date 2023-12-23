@@ -10,7 +10,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
         <img src="../styles/images/bienvenu.webp" class="img-circle" width="80" height="70" />
-        <a class="navbar-brand" href="#">Diane Fashion Design</a>
+        <a class="navbar-brand" href="#">CrazySimpson</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -20,16 +20,14 @@
                     <a class="nav-link" href="../index.php">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../pages/profile.php">Profile</a>
+                    <a class="nav-link" href="../PageInterne/profil.php">Profil</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../pages/panier.php">Paniers</a>
-                </li>
+
             </ul>
         </div>
     </nav>
     <?php
-    require_once '../functions/userCrud.php';
+    require_once '../pages/productcrud.php';
     require_once '../functions/function.php';
     require_once '../connections/connection.php';
 
@@ -41,18 +39,13 @@
 
 
         if (isset($_SESSION)) {
-            $userData = getUserByUsername($_POST['user_name']);
 
-            if ($userData) {
-
-                $updateRole = deleteUser($userData['id']);
-                $url = './admin.php';
-                header('Location: ' . $url);
-            }
+            $updateRole = deleteProduct($_POST['name']);
+            $url = '../admin.php';
+            header('Location: ' . $url);
         }
     }
 
     ?>
-
 
 </body>

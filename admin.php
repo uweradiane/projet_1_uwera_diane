@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once '../functions/userCrud.php';
-require_once '../functions/function.php';
-require_once '../connections/connection.php';
+require_once './functions/userCrud.php';
+require_once './functions/function.php';
+require_once './connections/connection.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@ require_once '../connections/connection.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="../styles/style.css">
+
 </head>
 
 <body class="acceuilAdmin">
@@ -29,16 +29,14 @@ require_once '../connections/connection.php';
                     <a class="nav-link" href="#">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../pages/profile.php">Profil</a>
+                    <a class="nav-link" href="../projet_1_uwera_diane/pages/profile.php">Profile</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../projet_1_uwera_diane/pages/gestionuser.php">gestionUsers</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../pages/cart.php">Paniers</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="gestionUser.php">gestionUsers</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="gestionProduct.php">gestionProduct</a>
+                    <a class="nav-link" href="../projet_1_uwera_diane/pages/gestionProduct.php">gestionProduct</a>
                 </li>
             </ul>
         </div>
