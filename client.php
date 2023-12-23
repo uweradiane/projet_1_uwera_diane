@@ -78,6 +78,25 @@ if (isset($_SESSION['auth'])) {
     <h3 style="float: right;">
         <h2>Welcome<a class="nav-link" href=#><?php echo isset($_SESSION['auth']) ? $name['user_name'] : "" ?></a></h2>
     </h3>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <a class="navbar-brand" href="index.php">Diane Fashion Design</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../projet_1_uwera_diane/pages/profile.php">Client informations</a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
     <form method="post" action="./utils/logout.php">
         <button type="submit" class="btn btn-danger">Logout</button>
     </form>
