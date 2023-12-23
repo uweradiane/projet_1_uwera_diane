@@ -1,8 +1,8 @@
 <?php
 session_start();
 require_once '../functions/userCrud.php';
-require_once '../functions/functions.php';
-require_once '../utils/connexion.php';
+require_once '../functions/function.php';
+require_once '../connections/connection.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
